@@ -10,4 +10,64 @@
     <artifactId>service-auth</artifactId>
     <description>授权服务</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.luoyemyy</groupId>
+            <artifactId>module-permissions</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.luoyemyy</groupId>
+            <artifactId>module-common-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.luoyemyy</groupId>
+            <artifactId>module-dependency-discovery-client</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <!-- 自动打包其他的依赖模块 -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <configuration>
+                    <args>
+                        <arg>-Xjsr305=strict</arg>
+                    </args>
+                    <compilerPlugins>
+                        <!--  所有与spring相关的类都标记为open，使得spring aop可以正常运行 -->
+                        <plugin>spring</plugin>
+                    </compilerPlugins>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-allopen</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 </project>
