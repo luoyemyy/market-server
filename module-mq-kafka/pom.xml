@@ -15,7 +15,6 @@
         <dependency>
             <groupId>com.github.luoyemyy</groupId>
             <artifactId>module-dependency-web</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
     </dependencies>

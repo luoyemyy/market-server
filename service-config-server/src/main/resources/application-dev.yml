@@ -1,0 +1,6 @@
+server.port: 9000
+spring.application.name: config-server
+
+eureka:
+  instance.instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client.serviceUrl.defaultZone: ${DISCOVERY-SERVER:http://localhost:9010/eureka/}

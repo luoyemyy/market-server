@@ -17,10 +17,12 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
+        <kotlin.version>1.3.72</kotlin.version>
     </properties>
 
     <modules>
-        <module>module-dependency-cloud-client</module>
+        <module>module-common</module>
+        <module>module-dependency-discovery-client</module>
         <module>module-dependency-web</module>
         <module>module-elasticsearch</module>
         <module>module-mq-kafka</module>
@@ -37,6 +39,21 @@
         <module>service-wechat</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-reflect</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -46,7 +63,86 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-dependency-discovery-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-dependency-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-elasticsearch</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-mq-kafka</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-mq-rabbit</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-mq-rocket</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-pay</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-pay-alipay</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-pay-wechat</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-redis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
+    <build>
+        <!--        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>-->
+        <!--        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>-->
+        <plugins>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <configuration>
+                    <args>
+                        <arg>-Xjsr305=strict</arg>
+                    </args>
+                    <compilerPlugins>
+                        <plugin>spring</plugin>
+                    </compilerPlugins>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-allopen</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 </project>
