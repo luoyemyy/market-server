@@ -26,11 +26,11 @@ class IdResponse(@ApiModelProperty("返回主键") var id: Long = 0) : ApiRespon
 
 class AlertResponse(@ApiModelProperty("返回信息") var alert: String? = null) : ApiResponse()
 
-fun <T> response(data: T?): DataResponse<T> {
+fun <T> dateResponse(data: T?): DataResponse<T> {
     return DataResponse(data)
 }
 
-fun <T> response(list: List<T>?): ListResponse<T> {
+fun <T> listResponse(list: List<T>?): ListResponse<T> {
     return ListResponse(list)
 }
 
