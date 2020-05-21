@@ -7,13 +7,13 @@
         <artifactId>market-server</artifactId>
         <version>1.0</version>
     </parent>
-    <artifactId>module-dependency-web</artifactId>
-    <description>web依赖模块</description>
+    <artifactId>module-permissions</artifactId>
+    <description>权限模块</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.github.luoyemyy</groupId>
+            <artifactId>module-redis</artifactId>
         </dependency>
     </dependencies>
 </project>

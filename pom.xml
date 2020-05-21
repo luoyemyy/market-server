@@ -22,6 +22,7 @@
 
     <modules>
         <module>module-common</module>
+        <module>module-common-web</module>
         <module>module-dependency-discovery-client</module>
         <module>module-dependency-web</module>
         <module>module-elasticsearch</module>
@@ -31,6 +32,7 @@
         <module>module-pay</module>
         <module>module-pay-alipay</module>
         <module>module-pay-wechat</module>
+        <module>module-permissions</module>
         <module>module-redis</module>
         <module>service-auth</module>
         <module>service-config-server</module>
