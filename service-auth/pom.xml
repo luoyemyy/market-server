@@ -13,15 +13,19 @@
     <dependencies>
         <dependency>
             <groupId>com.github.luoyemyy</groupId>
-            <artifactId>module-permissions</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.luoyemyy</groupId>
             <artifactId>module-common-web</artifactId>
         </dependency>
         <dependency>
             <groupId>com.github.luoyemyy</groupId>
             <artifactId>module-dependency-discovery-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.luoyemyy</groupId>
+            <artifactId>module-elasticsearch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.luoyemyy</groupId>
+            <artifactId>module-permissions</artifactId>
         </dependency>
     </dependencies>
 
@@ -31,23 +35,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-<!--            <plugin>-->
-<!--                &lt;!&ndash; 自动打包其他的依赖模块 &ndash;&gt;-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-dependency-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>copy-dependencies</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>copy-dependencies</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <outputDirectory>${project.build.directory}/lib</outputDirectory>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 </project>
