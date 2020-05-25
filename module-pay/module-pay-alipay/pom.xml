@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.github.luoyemyy</groupId>
-        <artifactId>market-server</artifactId>
+        <artifactId>module-pay</artifactId>
         <version>1.0</version>
     </parent>
-    <artifactId>module-pay-wechat</artifactId>
-    <description>微信支付模块</description>
+    <artifactId>module-pay-alipay</artifactId>
+    <description>支付宝模块</description>
 
 </project>

@@ -22,19 +22,14 @@
 
     <modules>
         <module>module-common</module>
-        <module>module-common-web</module>
-        <module>module-dependency-discovery-client</module>
-        <module>module-dependency-web</module>
+        <module>module-dependency</module>
         <module>module-elasticsearch</module>
-        <module>module-mq-kafka</module>
-        <module>module-mq-rabbit</module>
-        <module>module-mq-rocket</module>
+        <module>module-mq</module>
         <module>module-pay</module>
-        <module>module-pay-alipay</module>
-        <module>module-pay-wechat</module>
-        <module>module-permissions</module>
         <module>module-redis</module>
-        <module>service-auth</module>
+        <module>module-resource</module>
+        <module>module-web</module>
+        <module>service-user</module>
         <module>service-config-server</module>
         <module>service-discovery-server</module>
         <module>service-gateway</module>
@@ -76,12 +71,7 @@
             </dependency>
             <dependency>
                 <groupId>com.github.luoyemyy</groupId>
-                <artifactId>module-common-web</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.luoyemyy</groupId>
-                <artifactId>module-dependency-discovery-client</artifactId>
+                <artifactId>module-dependency</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -91,7 +81,17 @@
             </dependency>
             <dependency>
                 <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-dependency-discovery-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
                 <artifactId>module-elasticsearch</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-mq</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -126,12 +126,17 @@
             </dependency>
             <dependency>
                 <groupId>com.github.luoyemyy</groupId>
-                <artifactId>module-permissions</artifactId>
+                <artifactId>module-redis</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.luoyemyy</groupId>
-                <artifactId>module-redis</artifactId>
+                <artifactId>module-resource</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

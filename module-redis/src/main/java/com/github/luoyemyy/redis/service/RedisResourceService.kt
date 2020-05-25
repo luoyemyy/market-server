@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class RedisPermissionsService : RedisBaseService() {
+class RedisResourceService : RedisBaseService() {
 
     @Autowired
     protected lateinit var redisUserService: RedisUserService

@@ -28,4 +28,6 @@ class ElasticsearchBaseService {
         val options = RequestOptions.DEFAULT
         return restHighLevelClient.indices().create(request, options).isAcknowledged
     }
+
+
 }

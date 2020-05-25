@@ -21,16 +21,4 @@ class IndexParam {
     fun getSourceType(): XContentType {
         return XContentType.JSON
     }
-
-    class IndexSettings {
-
-    }
-
-    class IndexMapping {
-
-    }
-
-    class IndexAlias {
-
-    }
 }
