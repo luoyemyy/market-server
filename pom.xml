@@ -21,19 +21,8 @@
     </properties>
 
     <modules>
-        <module>module-common</module>
-        <module>module-dependency</module>
-        <module>module-elasticsearch</module>
-        <module>module-mq</module>
-        <module>module-pay</module>
-        <module>module-redis</module>
-        <module>module-resource</module>
-        <module>module-web</module>
-        <module>service-user</module>
-        <module>service-config-server</module>
-        <module>service-discovery-server</module>
-        <module>service-gateway</module>
-        <module>service-wechat</module>
+        <module>module</module>
+        <module>service</module>
     </modules>
 
     <dependencies>

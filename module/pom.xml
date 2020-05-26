@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.luoyemyy</groupId>
+        <artifactId>market-server</artifactId>
+        <version>1.0</version>
+    </parent>
+    <artifactId>module</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>module-common</module>
+        <module>module-dependency-discovery-client</module>
+        <module>module-dependency-web</module>
+        <module>module-elasticsearch</module>
+        <module>module-mq-kafka</module>
+        <module>module-mq-rabbit</module>
+        <module>module-mq-rocket</module>
+        <module>module-pay-alipay</module>
+        <module>module-pay-wechat</module>
+        <module>module-redis</module>
+        <module>module-resource</module>
+        <module>module-web</module>
+    </modules>
+</project>
