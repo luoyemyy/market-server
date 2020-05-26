@@ -23,6 +23,7 @@
         <module>module-pay-wechat</module>
         <module>module-redis</module>
         <module>module-resource</module>
+        <module>module-user</module>
         <module>module-web</module>
     </modules>
 </project>
