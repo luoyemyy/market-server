@@ -1,6 +1,6 @@
-package com.github.luoyemyy.resource.mapper
+package com.github.luoyemyy.user.mapper
 
-import com.github.luoyemyy.resource.entity.ResourceRecord
+import com.github.luoyemyy.user.entity.UserTokenRecord
 import org.apache.ibatis.annotations.DeleteProvider
 import org.apache.ibatis.annotations.InsertProvider
 import org.apache.ibatis.annotations.Mapper
@@ -18,7 +18,7 @@ import org.mybatis.dynamic.sql.update.render.UpdateStatementProvider
 import org.mybatis.dynamic.sql.util.SqlProviderAdapter
 
 @Mapper
-interface ResourceMapper {
+interface UserTokenMapper {
     @SelectProvider(type=SqlProviderAdapter::class, method="select")
     fun count(selectStatement: SelectStatementProvider): Long
 
@@ -27,26 +27,22 @@ interface ResourceMapper {
 
     @InsertProvider(type=SqlProviderAdapter::class, method="insert")
     @SelectKey(statement=["SELECT LAST_INSERT_ID()"], keyProperty="record.id", before=false, resultType=Long::class)
-    fun insert(insertStatement: InsertStatementProvider<ResourceRecord>): Int
+    fun insert(insertStatement: InsertStatementProvider<UserTokenRecord>): Int
 
     @SelectProvider(type=SqlProviderAdapter::class, method="select")
-    @ResultMap("ResourceRecordResult")
-    fun selectOne(selectStatement: SelectStatementProvider): ResourceRecord?
+    @ResultMap("UserTokenRecordResult")
+    fun selectOne(selectStatement: SelectStatementProvider): UserTokenRecord?
 
     @SelectProvider(type=SqlProviderAdapter::class, method="select")
-    @Results(id="ResourceRecordResult", value = [
+    @Results(id="UserTokenRecordResult", value = [
         Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
-        Result(column="parent_id", property="parentId", jdbcType=JdbcType.BIGINT),
-        Result(column="name", property="name", jdbcType=JdbcType.VARCHAR),
-        Result(column="type", property="type", jdbcType=JdbcType.INTEGER),
-        Result(column="path_id", property="pathId", jdbcType=JdbcType.INTEGER),
-        Result(column="path", property="path", jdbcType=JdbcType.VARCHAR),
-        Result(column="level", property="level", jdbcType=JdbcType.INTEGER),
-        Result(column="status", property="status", jdbcType=JdbcType.INTEGER),
+        Result(column="user_id", property="userId", jdbcType=JdbcType.BIGINT),
+        Result(column="token", property="token", jdbcType=JdbcType.VARCHAR),
+        Result(column="token_expire", property="tokenExpire", jdbcType=JdbcType.TIMESTAMP),
         Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         Result(column="update_time", property="updateTime", jdbcType=JdbcType.TIMESTAMP)
     ])
-    fun selectMany(selectStatement: SelectStatementProvider): List<ResourceRecord>
+    fun selectMany(selectStatement: SelectStatementProvider): List<UserTokenRecord>
 
     @UpdateProvider(type=SqlProviderAdapter::class, method="update")
     fun update(updateStatement: UpdateStatementProvider): Int

@@ -6,7 +6,7 @@ import com.github.luoyemyy.resource.mapper.ResourceDynamicSqlSupport.Resource.cr
 import com.github.luoyemyy.resource.mapper.ResourceDynamicSqlSupport.Resource.id
 import com.github.luoyemyy.resource.mapper.ResourceDynamicSqlSupport.Resource.level
 import com.github.luoyemyy.resource.mapper.ResourceDynamicSqlSupport.Resource.name
-import com.github.luoyemyy.resource.mapper.ResourceDynamicSqlSupport.Resource.parentLevel
+import com.github.luoyemyy.resource.mapper.ResourceDynamicSqlSupport.Resource.parentId
 import com.github.luoyemyy.resource.mapper.ResourceDynamicSqlSupport.Resource.path
 import com.github.luoyemyy.resource.mapper.ResourceDynamicSqlSupport.Resource.pathId
 import com.github.luoyemyy.resource.mapper.ResourceDynamicSqlSupport.Resource.status
@@ -29,12 +29,12 @@ fun ResourceMapper.deleteByPrimaryKey(id_: Long) =
 
 fun ResourceMapper.insert(record: ResourceRecord) =
     insert(this::insert, record, Resource) {
+        map(parentId).toProperty("parentId")
         map(name).toProperty("name")
         map(type).toProperty("type")
         map(pathId).toProperty("pathId")
         map(path).toProperty("path")
         map(level).toProperty("level")
-        map(parentLevel).toProperty("parentLevel")
         map(status).toProperty("status")
         map(createTime).toProperty("createTime")
         map(updateTime).toProperty("updateTime")
@@ -42,18 +42,18 @@ fun ResourceMapper.insert(record: ResourceRecord) =
 
 fun ResourceMapper.insertSelective(record: ResourceRecord) =
     insert(this::insert, record, Resource) {
+        map(parentId).toPropertyWhenPresent("parentId", record::parentId)
         map(name).toPropertyWhenPresent("name", record::name)
         map(type).toPropertyWhenPresent("type", record::type)
         map(pathId).toPropertyWhenPresent("pathId", record::pathId)
         map(path).toPropertyWhenPresent("path", record::path)
         map(level).toPropertyWhenPresent("level", record::level)
-        map(parentLevel).toPropertyWhenPresent("parentLevel", record::parentLevel)
         map(status).toPropertyWhenPresent("status", record::status)
         map(createTime).toPropertyWhenPresent("createTime", record::createTime)
         map(updateTime).toPropertyWhenPresent("updateTime", record::updateTime)
     }
 
-private val columnList = listOf(id, name, type, pathId, path, level, parentLevel, status, createTime, updateTime)
+private val columnList = listOf(id, parentId, name, type, pathId, path, level, status, createTime, updateTime)
 
 fun ResourceMapper.selectOne(completer: SelectCompleter) =
     selectOne(this::selectOne, columnList, Resource, completer)
@@ -74,12 +74,12 @@ fun ResourceMapper.update(completer: UpdateCompleter) =
 
 fun KotlinUpdateBuilder.updateAllColumns(record: ResourceRecord) =
     apply {
+        set(parentId).equalTo(record::parentId)
         set(name).equalTo(record::name)
         set(type).equalTo(record::type)
         set(pathId).equalTo(record::pathId)
         set(path).equalTo(record::path)
         set(level).equalTo(record::level)
-        set(parentLevel).equalTo(record::parentLevel)
         set(status).equalTo(record::status)
         set(createTime).equalTo(record::createTime)
         set(updateTime).equalTo(record::updateTime)
@@ -87,12 +87,12 @@ fun KotlinUpdateBuilder.updateAllColumns(record: ResourceRecord) =
 
 fun KotlinUpdateBuilder.updateSelectiveColumns(record: ResourceRecord) =
     apply {
+        set(parentId).equalToWhenPresent(record::parentId)
         set(name).equalToWhenPresent(record::name)
         set(type).equalToWhenPresent(record::type)
         set(pathId).equalToWhenPresent(record::pathId)
         set(path).equalToWhenPresent(record::path)
         set(level).equalToWhenPresent(record::level)
-        set(parentLevel).equalToWhenPresent(record::parentLevel)
         set(status).equalToWhenPresent(record::status)
         set(createTime).equalToWhenPresent(record::createTime)
         set(updateTime).equalToWhenPresent(record::updateTime)
@@ -100,12 +100,12 @@ fun KotlinUpdateBuilder.updateSelectiveColumns(record: ResourceRecord) =
 
 fun ResourceMapper.updateByPrimaryKey(record: ResourceRecord) =
     update {
+        set(parentId).equalTo(record::parentId)
         set(name).equalTo(record::name)
         set(type).equalTo(record::type)
         set(pathId).equalTo(record::pathId)
         set(path).equalTo(record::path)
         set(level).equalTo(record::level)
-        set(parentLevel).equalTo(record::parentLevel)
         set(status).equalTo(record::status)
         set(createTime).equalTo(record::createTime)
         set(updateTime).equalTo(record::updateTime)
@@ -114,12 +114,12 @@ fun ResourceMapper.updateByPrimaryKey(record: ResourceRecord) =
 
 fun ResourceMapper.updateByPrimaryKeySelective(record: ResourceRecord) =
     update {
+        set(parentId).equalToWhenPresent(record::parentId)
         set(name).equalToWhenPresent(record::name)
         set(type).equalToWhenPresent(record::type)
         set(pathId).equalToWhenPresent(record::pathId)
         set(path).equalToWhenPresent(record::path)
         set(level).equalToWhenPresent(record::level)
-        set(parentLevel).equalToWhenPresent(record::parentLevel)
         set(status).equalToWhenPresent(record::status)
         set(createTime).equalToWhenPresent(record::createTime)
         set(updateTime).equalToWhenPresent(record::updateTime)

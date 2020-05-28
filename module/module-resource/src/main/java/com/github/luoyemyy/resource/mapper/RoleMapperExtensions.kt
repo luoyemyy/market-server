@@ -4,9 +4,9 @@ import com.github.luoyemyy.resource.entity.RoleRecord
 import com.github.luoyemyy.resource.mapper.RoleDynamicSqlSupport.Role
 import com.github.luoyemyy.resource.mapper.RoleDynamicSqlSupport.Role.createTime
 import com.github.luoyemyy.resource.mapper.RoleDynamicSqlSupport.Role.id
+import com.github.luoyemyy.resource.mapper.RoleDynamicSqlSupport.Role.isAdmin
 import com.github.luoyemyy.resource.mapper.RoleDynamicSqlSupport.Role.name
 import com.github.luoyemyy.resource.mapper.RoleDynamicSqlSupport.Role.status
-import com.github.luoyemyy.resource.mapper.RoleDynamicSqlSupport.Role.type
 import com.github.luoyemyy.resource.mapper.RoleDynamicSqlSupport.Role.updateTime
 import org.mybatis.dynamic.sql.SqlBuilder.isEqualTo
 import org.mybatis.dynamic.sql.util.kotlin.*
@@ -26,7 +26,7 @@ fun RoleMapper.deleteByPrimaryKey(id_: Long) =
 fun RoleMapper.insert(record: RoleRecord) =
     insert(this::insert, record, Role) {
         map(name).toProperty("name")
-        map(type).toProperty("type")
+        map(isAdmin).toProperty("isAdmin")
         map(status).toProperty("status")
         map(updateTime).toProperty("updateTime")
         map(createTime).toProperty("createTime")
@@ -35,13 +35,13 @@ fun RoleMapper.insert(record: RoleRecord) =
 fun RoleMapper.insertSelective(record: RoleRecord) =
     insert(this::insert, record, Role) {
         map(name).toPropertyWhenPresent("name", record::name)
-        map(type).toPropertyWhenPresent("type", record::type)
+        map(isAdmin).toPropertyWhenPresent("isAdmin", record::isAdmin)
         map(status).toPropertyWhenPresent("status", record::status)
         map(updateTime).toPropertyWhenPresent("updateTime", record::updateTime)
         map(createTime).toPropertyWhenPresent("createTime", record::createTime)
     }
 
-private val columnList = listOf(id, name, type, status, updateTime, createTime)
+private val columnList = listOf(id, name, isAdmin, status, updateTime, createTime)
 
 fun RoleMapper.selectOne(completer: SelectCompleter) =
     selectOne(this::selectOne, columnList, Role, completer)
@@ -63,7 +63,7 @@ fun RoleMapper.update(completer: UpdateCompleter) =
 fun KotlinUpdateBuilder.updateAllColumns(record: RoleRecord) =
     apply {
         set(name).equalTo(record::name)
-        set(type).equalTo(record::type)
+        set(isAdmin).equalTo(record::isAdmin)
         set(status).equalTo(record::status)
         set(updateTime).equalTo(record::updateTime)
         set(createTime).equalTo(record::createTime)
@@ -72,7 +72,7 @@ fun KotlinUpdateBuilder.updateAllColumns(record: RoleRecord) =
 fun KotlinUpdateBuilder.updateSelectiveColumns(record: RoleRecord) =
     apply {
         set(name).equalToWhenPresent(record::name)
-        set(type).equalToWhenPresent(record::type)
+        set(isAdmin).equalToWhenPresent(record::isAdmin)
         set(status).equalToWhenPresent(record::status)
         set(updateTime).equalToWhenPresent(record::updateTime)
         set(createTime).equalToWhenPresent(record::createTime)
@@ -81,7 +81,7 @@ fun KotlinUpdateBuilder.updateSelectiveColumns(record: RoleRecord) =
 fun RoleMapper.updateByPrimaryKey(record: RoleRecord) =
     update {
         set(name).equalTo(record::name)
-        set(type).equalTo(record::type)
+        set(isAdmin).equalTo(record::isAdmin)
         set(status).equalTo(record::status)
         set(updateTime).equalTo(record::updateTime)
         set(createTime).equalTo(record::createTime)
@@ -91,7 +91,7 @@ fun RoleMapper.updateByPrimaryKey(record: RoleRecord) =
 fun RoleMapper.updateByPrimaryKeySelective(record: RoleRecord) =
     update {
         set(name).equalToWhenPresent(record::name)
-        set(type).equalToWhenPresent(record::type)
+        set(isAdmin).equalToWhenPresent(record::isAdmin)
         set(status).equalToWhenPresent(record::status)
         set(updateTime).equalToWhenPresent(record::updateTime)
         set(createTime).equalToWhenPresent(record::createTime)

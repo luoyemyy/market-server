@@ -8,6 +8,8 @@ object ResourceDynamicSqlSupport {
     object Resource : SqlTable("resource") {
         val id = column<Long>("id", JDBCType.BIGINT)
 
+        val parentId = column<Long>("parent_id", JDBCType.BIGINT)
+
         val name = column<String>("name", JDBCType.VARCHAR)
 
         val type = column<Int>("type", JDBCType.INTEGER)
@@ -17,8 +19,6 @@ object ResourceDynamicSqlSupport {
         val path = column<String>("path", JDBCType.VARCHAR)
 
         val level = column<Int>("level", JDBCType.INTEGER)
-
-        val parentLevel = column<Int>("parent_level", JDBCType.INTEGER)
 
         val status = column<Int>("status", JDBCType.INTEGER)
 

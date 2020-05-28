@@ -1,6 +1,6 @@
 package com.github.luoyemyy.resource.mapper
 
-import com.github.luoyemyy.resource.entity.ResourceRecord
+import com.github.luoyemyy.resource.entity.ManagerRoleRecord
 import org.apache.ibatis.annotations.DeleteProvider
 import org.apache.ibatis.annotations.InsertProvider
 import org.apache.ibatis.annotations.Mapper
@@ -18,7 +18,7 @@ import org.mybatis.dynamic.sql.update.render.UpdateStatementProvider
 import org.mybatis.dynamic.sql.util.SqlProviderAdapter
 
 @Mapper
-interface ResourceMapper {
+interface ManagerRoleMapper {
     @SelectProvider(type=SqlProviderAdapter::class, method="select")
     fun count(selectStatement: SelectStatementProvider): Long
 
@@ -27,26 +27,22 @@ interface ResourceMapper {
 
     @InsertProvider(type=SqlProviderAdapter::class, method="insert")
     @SelectKey(statement=["SELECT LAST_INSERT_ID()"], keyProperty="record.id", before=false, resultType=Long::class)
-    fun insert(insertStatement: InsertStatementProvider<ResourceRecord>): Int
+    fun insert(insertStatement: InsertStatementProvider<ManagerRoleRecord>): Int
 
     @SelectProvider(type=SqlProviderAdapter::class, method="select")
-    @ResultMap("ResourceRecordResult")
-    fun selectOne(selectStatement: SelectStatementProvider): ResourceRecord?
+    @ResultMap("ManagerRoleRecordResult")
+    fun selectOne(selectStatement: SelectStatementProvider): ManagerRoleRecord?
 
     @SelectProvider(type=SqlProviderAdapter::class, method="select")
-    @Results(id="ResourceRecordResult", value = [
+    @Results(id="ManagerRoleRecordResult", value = [
         Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
-        Result(column="parent_id", property="parentId", jdbcType=JdbcType.BIGINT),
-        Result(column="name", property="name", jdbcType=JdbcType.VARCHAR),
-        Result(column="type", property="type", jdbcType=JdbcType.INTEGER),
-        Result(column="path_id", property="pathId", jdbcType=JdbcType.INTEGER),
-        Result(column="path", property="path", jdbcType=JdbcType.VARCHAR),
-        Result(column="level", property="level", jdbcType=JdbcType.INTEGER),
+        Result(column="role_id", property="roleId", jdbcType=JdbcType.BIGINT),
+        Result(column="manager_id", property="managerId", jdbcType=JdbcType.BIGINT),
         Result(column="status", property="status", jdbcType=JdbcType.INTEGER),
         Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         Result(column="update_time", property="updateTime", jdbcType=JdbcType.TIMESTAMP)
     ])
-    fun selectMany(selectStatement: SelectStatementProvider): List<ResourceRecord>
+    fun selectMany(selectStatement: SelectStatementProvider): List<ManagerRoleRecord>
 
     @UpdateProvider(type=SqlProviderAdapter::class, method="update")
     fun update(updateStatement: UpdateStatementProvider): Int

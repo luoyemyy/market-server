@@ -17,6 +17,10 @@
         </dependency>
         <dependency>
             <groupId>com.github.luoyemyy</groupId>
+            <artifactId>module-user</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.luoyemyy</groupId>
             <artifactId>module-dependency-discovery-client</artifactId>
         </dependency>
         <dependency>

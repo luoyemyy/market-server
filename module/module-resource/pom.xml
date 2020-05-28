@@ -15,6 +15,10 @@
             <groupId>com.github.luoyemyy</groupId>
             <artifactId>module-redis</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.luoyemyy</groupId>
+            <artifactId>module-web</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

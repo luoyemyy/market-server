@@ -13,6 +13,7 @@
 
     <modules>
         <module>service-config-server</module>
+        <module>service-data</module>
         <module>service-discovery-server</module>
         <module>service-gateway</module>
         <module>service-user</module>

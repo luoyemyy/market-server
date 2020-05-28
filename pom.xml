@@ -86,7 +86,7 @@
             </dependency>
             <dependency>
                 <groupId>com.github.luoyemyy</groupId>
-                <artifactId>module-dependency</artifactId>
+                <artifactId>module-dependency-discovery-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -96,17 +96,7 @@
             </dependency>
             <dependency>
                 <groupId>com.github.luoyemyy</groupId>
-                <artifactId>module-dependency-discovery-client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.luoyemyy</groupId>
                 <artifactId>module-elasticsearch</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.luoyemyy</groupId>
-                <artifactId>module-mq</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -122,11 +112,6 @@
             <dependency>
                 <groupId>com.github.luoyemyy</groupId>
                 <artifactId>module-mq-rocket</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.luoyemyy</groupId>
-                <artifactId>module-pay</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -147,6 +132,11 @@
             <dependency>
                 <groupId>com.github.luoyemyy</groupId>
                 <artifactId>module-resource</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.luoyemyy</groupId>
+                <artifactId>module-user</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

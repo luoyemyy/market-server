@@ -37,7 +37,7 @@ interface RoleMapper {
     @Results(id="RoleRecordResult", value = [
         Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
         Result(column="name", property="name", jdbcType=JdbcType.VARCHAR),
-        Result(column="type", property="type", jdbcType=JdbcType.INTEGER),
+        Result(column="is_admin", property="isAdmin", jdbcType=JdbcType.INTEGER),
         Result(column="status", property="status", jdbcType=JdbcType.INTEGER),
         Result(column="update_time", property="updateTime", jdbcType=JdbcType.TIMESTAMP),
         Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP)
