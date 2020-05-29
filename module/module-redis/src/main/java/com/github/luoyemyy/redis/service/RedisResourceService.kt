@@ -1,6 +1,5 @@
 package com.github.luoyemyy.redis.service
 
-import com.github.luoyemyy.redis.bean.CacheRoleRights
 import com.github.luoyemyy.redis.constants.RedisKey
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -21,25 +20,23 @@ class RedisResourceService : RedisBaseService() {
     /**
      * 校验用户是否有指定角色和权限
      */
-    fun hasRightsByUser(userId: Long, roleId: Long, rightsId: Long): Boolean {
-        return hasRoleByUser(userId, roleId) && hasRightsByRole(roleId, rightsId)
+    fun hasResourceByUser(userId: Long, roleId: Long, resourceId: Long): Boolean {
+        return hasRoleByUser(userId, roleId) && hasResourceByRole(roleId, resourceId)
     }
 
     /**
      * 校验角色是否有指定权限
      */
-    fun hasRightsByRole(roleId: Long, rightsId: Long): Boolean {
-        return hash().hasKey(RedisKey.role(roleId), rightsId.toString())
+    fun hasResourceByRole(roleId: Long, resourceId: Long): Boolean {
+        return hash().hasKey(RedisKey.role(roleId), resourceId.toString())
     }
 
     /**
      * 缓存角色对应的权限
      */
-    fun cacheRoleRights(roleRights: List<CacheRoleRights>) {
-        roleRights.forEach { rr ->
-            rr.rights?.associateBy({ it.toString() }, { "1" })?.apply {
-                hash().putAll(RedisKey.role(rr.roleId), this)
-            }
+    fun cacheRoleResource(roleId: Long, resourceIds: List<Long>) {
+        resourceIds.associateBy({ it.toString() }, { "1" }).apply {
+            hash().putAll(RedisKey.role(roleId), this)
         }
     }
 }

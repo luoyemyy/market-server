@@ -20,5 +20,4 @@ class UserTokenService {
             limit(1)
         }
     }
-
 }
