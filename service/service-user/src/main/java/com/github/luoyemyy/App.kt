@@ -3,7 +3,6 @@ package com.github.luoyemyy
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
-
 @SpringBootApplication
 class App
 

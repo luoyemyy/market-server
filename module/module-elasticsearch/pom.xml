@@ -13,6 +13,10 @@
     <dependencies>
         <dependency>
             <groupId>com.github.luoyemyy</groupId>
+            <artifactId>module-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.luoyemyy</groupId>
             <artifactId>module-dependency-web</artifactId>
         </dependency>
         <dependency>
