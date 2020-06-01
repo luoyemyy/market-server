@@ -2,11 +2,8 @@ package com.github.luoyemyy.redis.constants
 
 object RedisKey {
 
-    fun userInfo(userId: Long): String {
-        return "userInfo_$userId"
-    }
+    const val LOGIN_TOKEN = "loginToken"
+    const val USER_INFO = "userInfo"
+    const val ROLE_RESOURCE = "roleResource"
 
-    fun role(roleId: Long): String {
-        return "role_$roleId"
-    }
 }

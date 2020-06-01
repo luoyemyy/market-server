@@ -1,5 +1,6 @@
 package com.github.luoyemyy.user.service
 
+import com.github.luoyemyy.redis.service.RedisUserService
 import com.github.luoyemyy.user.entity.UserRecord
 import com.github.luoyemyy.user.mapper.UserDynamicSqlSupport.User.phone
 import com.github.luoyemyy.user.mapper.UserDynamicSqlSupport.User.status
@@ -19,6 +20,9 @@ class UserService {
 
     @Autowired
     private lateinit var userTokenService: UserTokenService
+
+    @Autowired
+    private lateinit var redisUserService: RedisUserService
 
     fun getByUsername(username0: String): UserRecord? {
         return userMapper.selectOne {

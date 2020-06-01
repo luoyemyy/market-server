@@ -1,6 +1,7 @@
 package com.github.luoyemyy.user.service
 
 import com.github.luoyemyy.common.advice.AppCode
+import com.github.luoyemyy.redis.service.RedisUserService
 import com.github.luoyemyy.user.bean.request.RequestLoginPhone
 import com.github.luoyemyy.user.bean.request.RequestLoginUsername
 import com.github.luoyemyy.user.bean.response.ResponseManagerLogin
@@ -12,10 +13,14 @@ class LoginService {
 
     @Autowired
     private lateinit var userService: UserService
+    @Autowired
+    private lateinit var redisUserService: RedisUserService
 
     fun loginByUsername(param: RequestLoginUsername): ResponseManagerLogin {
         return userService.getByUsername(param.username)?.let {
-            if (param.password.equals(it.password, true)) {
+            val userId = it.id
+            if (userId != null && param.password.equals(it.password, true)) {
+                redisUserService.getUserInfo(userId)
                 return ResponseManagerLogin()
             } else {
                 null
