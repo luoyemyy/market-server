@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 
 @ApiModel("请求结果")
-open class ApiResponse(appCode: AppCode) {
+open class Response(appCode: AppCode) {
     @ApiModelProperty("0 成功； 其他 失败 ")
     var code: Int = appCode.code
 
@@ -18,13 +18,13 @@ open class ApiResponse(appCode: AppCode) {
     constructor() : this(AppCode.OK)
 }
 
-class DataResponse<T>(@ApiModelProperty("返回对象") var data: T? = null) : ApiResponse()
+class DataResponse<T>(@ApiModelProperty("返回对象") var data: T? = null) : Response()
 
-class ListResponse<T>(@ApiModelProperty("返回列表") var list: List<T>? = null) : ApiResponse()
+class ListResponse<T>(@ApiModelProperty("返回列表") var list: List<T>? = null) : Response()
 
-class IdResponse(@ApiModelProperty("返回主键") var id: Long = 0) : ApiResponse()
+class IdResponse(@ApiModelProperty("返回主键") var id: Long = 0) : Response()
 
-class AlertResponse(@ApiModelProperty("返回信息") var alert: String? = null) : ApiResponse()
+class AlertResponse(@ApiModelProperty("返回信息") var alert: String? = null) : Response()
 
 fun <T> dateResponse(data: T?): DataResponse<T> {
     return DataResponse(data)
@@ -34,11 +34,11 @@ fun <T> listResponse(list: List<T>?): ListResponse<T> {
     return ListResponse(list)
 }
 
-fun response(): ApiResponse {
-    return ApiResponse()
+fun response(): Response {
+    return Response()
 }
 
-fun response(ok: Boolean): ApiResponse {
-    return ApiResponse(if (ok) AppCode.OK else AppCode.FAIL)
+fun response(ok: Boolean): Response {
+    return Response(if (ok) AppCode.OK else AppCode.FAIL)
 }
 

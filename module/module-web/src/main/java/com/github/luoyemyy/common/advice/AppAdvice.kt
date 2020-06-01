@@ -1,6 +1,6 @@
 package com.github.luoyemyy.common.advice
 
-import com.github.luoyemyy.common.swagger.ApiResponse
+import com.github.luoyemyy.common.swagger.Response
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
@@ -15,7 +15,7 @@ class AppAdvice {
     private val logger = LoggerFactory.getLogger(AppAdvice::class.java)
 
     @ExceptionHandler(MethodArgumentNotValidException::class)
-    fun paramError(e: MethodArgumentNotValidException): ApiResponse {
+    fun paramError(e: MethodArgumentNotValidException): Response {
         val msg = e.bindingResult.fieldErrors.joinToString(",") {
             "${it.field}:${it.defaultMessage}"
         }
@@ -24,7 +24,7 @@ class AppAdvice {
     }
 
     @ExceptionHandler(ConstraintViolationException::class)
-    fun paramError(e: ConstraintViolationException): ApiResponse {
+    fun paramError(e: ConstraintViolationException): Response {
         val msg = e.constraintViolations.joinToString(",") {
             "${getPathName(it.propertyPath)}:${it.message}"
         }
@@ -33,25 +33,25 @@ class AppAdvice {
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException::class)
-    fun paramError(e: MethodArgumentTypeMismatchException): ApiResponse {
+    fun paramError(e: MethodArgumentTypeMismatchException): Response {
         logger.error("AppAdvice.paramError：{}", e.message, e)
         return getResponse(AppCode.ERROR_PARAM.throws(e.message))
     }
 
     @ExceptionHandler(AppException::class)
-    fun appError(e: AppException): ApiResponse {
+    fun appError(e: AppException): Response {
         logger.error("AppAdvice.appError：{}", e.errorMsg(), e)
         return getResponse(e)
     }
 
     @ExceptionHandler(Throwable::class)
-    fun throwable(e: Throwable): ApiResponse {
+    fun throwable(e: Throwable): Response {
         logger.error("AppAdvice.throwable：{}", e.message, e)
         return getResponse(AppCode.FAIL.throws(e.message))
     }
 
-    private fun getResponse(e: AppException): ApiResponse {
-        return ApiResponse().apply {
+    private fun getResponse(e: AppException): Response {
+        return Response().apply {
             code = e.code()
             codeMsg = e.codeMsg()
             errorMsg = e.errorMsg()
