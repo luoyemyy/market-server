@@ -1,4 +1,4 @@
-package com.github.luoyemyy.auth.bean.request
+package com.github.luoyemyy.user.bean.request
 
 import com.github.luoyemyy.common.valid.ValidString
 import io.swagger.annotations.ApiModel

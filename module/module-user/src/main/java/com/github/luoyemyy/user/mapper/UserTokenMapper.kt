@@ -38,7 +38,7 @@ interface UserTokenMapper {
         Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
         Result(column="user_id", property="userId", jdbcType=JdbcType.BIGINT),
         Result(column="token", property="token", jdbcType=JdbcType.VARCHAR),
-        Result(column="token_expire", property="tokenExpire", jdbcType=JdbcType.TIMESTAMP),
+        Result(column="token_expire", property="tokenExpire", jdbcType=JdbcType.BIGINT),
         Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         Result(column="update_time", property="updateTime", jdbcType=JdbcType.TIMESTAMP)
     ])

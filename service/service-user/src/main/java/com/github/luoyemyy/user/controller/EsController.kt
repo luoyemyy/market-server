@@ -1,4 +1,4 @@
-package com.github.luoyemyy.auth.controller
+package com.github.luoyemyy.user.controller
 
 import com.github.luoyemyy.common.aspect.AppApi
 import com.github.luoyemyy.common.swagger.ApiResponse

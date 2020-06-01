@@ -3,6 +3,7 @@ package com.github.luoyemyy.elasticsearch.service
 import com.github.luoyemyy.common.util.toJsonString
 import org.elasticsearch.action.bulk.BulkRequest
 import org.elasticsearch.action.index.IndexRequest
+import org.elasticsearch.action.search.SearchRequest
 import org.elasticsearch.client.RequestOptions
 import org.elasticsearch.client.RestHighLevelClient
 import org.elasticsearch.common.xcontent.XContentType
@@ -37,6 +38,7 @@ class ElasticsearchTestService {
                     curr -= 86400000
                 }
             }
+//            restHighLevelClient.search(SearchRequest())
             restHighLevelClient.bulk(this, RequestOptions.DEFAULT)
         }
     }

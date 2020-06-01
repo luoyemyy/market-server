@@ -12,7 +12,7 @@ object UserTokenDynamicSqlSupport {
 
         val token = column<String>("token", JDBCType.VARCHAR)
 
-        val tokenExpire = column<Date>("token_expire", JDBCType.TIMESTAMP)
+        val tokenExpire = column<Long>("token_expire", JDBCType.BIGINT)
 
         val createTime = column<Date>("create_time", JDBCType.TIMESTAMP)
 
