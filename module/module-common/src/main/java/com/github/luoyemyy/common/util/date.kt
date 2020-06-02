@@ -59,7 +59,7 @@ object DateUtil {
         }
     }
 
-    private fun sdf(format: String?): DateTimeFormatter? {
+    private fun getSdf(format: String?): DateTimeFormatter? {
         return if (format.isNullOrEmpty()) {
             logger.error("format不能为空")
             return null
@@ -79,13 +79,13 @@ object DateUtil {
 
     internal fun format8(date: ZonedDateTime?, format: String?): String? {
         return date?.let {
-            sdf(format)?.format(it)
+            getSdf(format)?.format(it)
         }
     }
 
     internal fun parse8(date: String?, format: String?): ZonedDateTime? {
         return date?.let {
-            sdf(format)?.let {
+            getSdf(format)?.let {
                 try {
                     parse(it.parse(date))
                 } catch (e: DateTimeParseException) {
@@ -111,6 +111,7 @@ object DateUtil {
         val hasMinute = ta.isSupported(ChronoField.MINUTE_OF_HOUR)
         val hasSecond = ta.isSupported(ChronoField.SECOND_OF_MINUTE)
         val hasNano = ta.isSupported(ChronoField.NANO_OF_SECOND)
+
         var year = if (hasYear) ta.get(ChronoField.YEAR) else 0
         var month = if (hasMonth) ta.get(ChronoField.MONTH_OF_YEAR) else 0
         var day = if (hasDay) ta.get(ChronoField.DAY_OF_MONTH) else 0
