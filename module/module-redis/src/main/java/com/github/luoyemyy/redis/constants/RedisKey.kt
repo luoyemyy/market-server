@@ -7,7 +7,6 @@ internal object RedisKey {
     //*****************************************************
     const val LOGIN_TOKEN = "loginToken"        // hash key:loginToken              field:${token}      value:${userId}
     const val USER_INFO = "userInfo"            // hash key:userInfo                field:${userId}     value:${userInfo}
-    const val MANAGER_INFO = "managerInfo"      // hash key:managerInfo             field:${userId}     value:${managerInfo}
     const val ROLE_INFO = "role_info"           // hash key:role_info               field:${roleId}     value:${roleInfo}
     const val RESOURCE_INFO = "resource_info"   // hash key:resource_info           field:${resourceId} value:${resourceInfo}
 
