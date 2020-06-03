@@ -1,17 +1,22 @@
 package com.github.luoyemyy.redis.constants
 
-object RedisKey {
+internal object RedisKey {
 
     //*****************************************************
     //*********************** hash ************************
     //*****************************************************
-    const val LOGIN_TOKEN = "loginToken"        // hash key:loginToken field:${token} value:${userId}
-    const val USER_INFO = "userInfo"            // hash key:userInfo field:${userId} value:${userInfo}
-    const val ROLE_RESOURCE = "roleResource_"   // hash key:roleResource field:${roleId} value:${userInfo}
+    const val LOGIN_TOKEN = "loginToken"        // hash key:loginToken              field:${token}      value:${userId}
+    const val USER_INFO = "userInfo"            // hash key:userInfo                field:${userId}     value:${userInfo}
+    const val MANAGER_INFO = "managerInfo"      // hash key:managerInfo             field:${userId}     value:${managerInfo}
+    const val ROLE_INFO = "role_info"           // hash key:role_info               field:${roleId}     value:${roleInfo}
+    const val RESOURCE_INFO = "resource_info"   // hash key:resource_info           field:${resourceId} value:${resourceInfo}
+
+    fun roleResource(roleId: Long): String {    // hash key:roleResource_${roleId}  field:${resourceId} value:0
+        return "roleResource_${roleId}"
+    }
 
     //*****************************************************
     //*********************** value ***********************
     //*****************************************************
-    const val RESOURCE_INFO = "resource_info_"   // value key:resource_info_${resourceId}
 
 }
