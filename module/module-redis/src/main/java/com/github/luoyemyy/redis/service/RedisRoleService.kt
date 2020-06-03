@@ -1,5 +1,8 @@
 package com.github.luoyemyy.redis.service
 
+import com.github.luoyemyy.common.util.toJsonString
+import com.github.luoyemyy.redis.bean.CacheResource
+import com.github.luoyemyy.redis.bean.CacheRoleResource
 import com.github.luoyemyy.redis.constants.RedisKey
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -17,12 +20,26 @@ class RedisRoleService : RedisBaseService() {
         return hash().hasKey(RedisKey.roleResource(roleId), resourceId.toString())
     }
 
-    /**
-     * 缓存角色对应的权限
-     */
-//    fun cacheRoleResource(roleId: Long, resourceIds: List<Long>) {
-//        resourceIds.associateBy({ it.toString() }, { "1" }).apply {
-//            hash().putAll(RedisKey.role(roleId), this)
-//        }
-//    }
+    fun cacheRoleResource(roleResources: CacheRoleResource) {
+        val value = toByte(0) ?: return
+        val resources = roleResources.resources ?: return
+        if (resources.isNotEmpty()) {
+            val roleId = toByte(RedisKey.roleResource(roleResources.roleId)) ?: return
+            redisTemplate.executePipelined { c ->
+                resources.forEach { r ->
+                    toByte(r)?.also { resourceId ->
+                        c.hashCommands().hSet(roleId, resourceId, value)
+                    }
+                }
+            }
+        }
+    }
+
+    fun cacheResource(resources: List<CacheResource>?) {
+        if (!resources.isNullOrEmpty()) {
+            resources.associateBy({ it.resourceId.toString() }, { it.toJsonString() }).apply {
+                hash().putAll(RedisKey.RESOURCE_INFO, this)
+            }
+        }
+    }
 }
