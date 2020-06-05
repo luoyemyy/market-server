@@ -11,9 +11,9 @@
     <description>rocket模块</description>
 
     <dependencies>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-stream-binder-rocketmq</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-stream-binder-rocketmq</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 </project>

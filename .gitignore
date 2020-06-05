@@ -6,3 +6,4 @@ gen
 .lst
 .DS_Store
 target/
+log

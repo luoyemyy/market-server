@@ -19,12 +19,12 @@ class LoginService {
     fun loginByUsername(param: RequestLoginUsername): ResponseManagerLogin {
         return userService.getByUsername(param.username)?.let {
             val userId = it.id
-            if (userId != null && param.password.equals(it.password, true)) {
-                redisUserService.getUserInfo(userId)
-                return ResponseManagerLogin()
-            } else {
+//            if (userId != null && param.password.equals(it.password, true)) {
+//                redisUserService.getUserInfo(userId)
+//                return ResponseManagerLogin()
+//            } else {
                 null
-            }
+//            }
         } ?: throw AppCode.ERROR_USERNAME_PASSWORD.throws()
     }
 
