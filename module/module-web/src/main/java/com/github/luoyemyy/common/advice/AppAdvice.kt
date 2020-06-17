@@ -1,6 +1,6 @@
 package com.github.luoyemyy.common.advice
 
-import com.github.luoyemyy.common.swagger.Response
+import com.github.luoyemyy.common.bean.Response
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler

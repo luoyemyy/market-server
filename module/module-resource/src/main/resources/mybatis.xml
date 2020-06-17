@@ -25,7 +25,7 @@
         <table tableName="role">
             <generatedKey column="id" sqlStatement="Mysql" identity="true" />
         </table>
-        <table tableName="manager_role">
+        <table tableName="user_role">
             <generatedKey column="id" sqlStatement="Mysql" identity="true" />
         </table>
         <table tableName="resource">

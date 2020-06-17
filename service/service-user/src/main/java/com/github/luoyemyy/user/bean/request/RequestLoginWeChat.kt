@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 
 @ApiModel("微信登录参数")
-class RequestLoginWechat : RequestLogin() {
+class RequestLoginWeChat : RequestLogin() {
 
     @ValidString
     @ApiModelProperty(value = "原始id", required = true)

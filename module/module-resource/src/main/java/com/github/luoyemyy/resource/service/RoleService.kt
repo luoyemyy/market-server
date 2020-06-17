@@ -87,14 +87,4 @@ class RoleService {
         }
     }
 
-    fun getByManager(managerId: Long): List<RoleRecord> {
-        return roleMapper.select {
-            join(ManagerRoleDynamicSqlSupport.ManagerRole, "ur") {
-                on(ManagerRoleDynamicSqlSupport.ManagerRole.roleId, SqlBuilder.equalTo(RoleDynamicSqlSupport.Role.id))
-            }
-            where(ManagerRoleDynamicSqlSupport.ManagerRole.status, SqlBuilder.isEqualTo(1))
-            and(RoleDynamicSqlSupport.Role.status, SqlBuilder.isEqualTo(1))
-            and(ManagerRoleDynamicSqlSupport.ManagerRole.managerId, SqlBuilder.isEqualTo(managerId))
-        }
-    }
 }

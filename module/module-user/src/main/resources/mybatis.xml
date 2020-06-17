@@ -28,7 +28,7 @@
         <table tableName="user_token">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-        <table tableName="manager">
+        <table tableName="user_role">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>

@@ -1,4 +1,4 @@
-package com.github.luoyemyy.common.swagger
+package com.github.luoyemyy.common.bean
 
 import com.github.luoyemyy.common.advice.AppCode
 import io.swagger.annotations.ApiModel

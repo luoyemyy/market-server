@@ -5,6 +5,7 @@ import java.util.Date
 data class UserTokenRecord(
     var id: Long? = null,
     var userId: Long? = null,
+    var client: String? = null,
     var token: String? = null,
     var tokenExpire: Long? = null,
     var createTime: Date? = null,

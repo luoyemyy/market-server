@@ -10,6 +10,8 @@ object UserTokenDynamicSqlSupport {
 
         val userId = column<Long>("user_id", JDBCType.BIGINT)
 
+        val client = column<String>("client", JDBCType.VARCHAR)
+
         val token = column<String>("token", JDBCType.VARCHAR)
 
         val tokenExpire = column<Long>("token_expire", JDBCType.BIGINT)

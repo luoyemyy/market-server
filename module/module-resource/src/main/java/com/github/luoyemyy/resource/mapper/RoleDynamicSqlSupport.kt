@@ -10,7 +10,7 @@ object RoleDynamicSqlSupport {
 
         val name = column<String>("name", JDBCType.VARCHAR)
 
-        val isAdmin = column<Int>("is_admin", JDBCType.INTEGER)
+        val serviceType = column<String>("service_type", JDBCType.VARCHAR)
 
         val status = column<Int>("status", JDBCType.INTEGER)
 

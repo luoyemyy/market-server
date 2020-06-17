@@ -4,9 +4,11 @@ import java.sql.JDBCType
 import java.util.Date
 import org.mybatis.dynamic.sql.SqlTable
 
-object ManagerDynamicSqlSupport {
-    object Manager : SqlTable("manager") {
+object UserRoleDynamicSqlSupport {
+    object UserRole : SqlTable("user_role") {
         val id = column<Long>("id", JDBCType.BIGINT)
+
+        val roleId = column<Long>("role_id", JDBCType.BIGINT)
 
         val userId = column<Long>("user_id", JDBCType.BIGINT)
 
